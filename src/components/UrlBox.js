@@ -77,20 +77,24 @@ const UrlBox = () => {
             <h3 className='text-center mt-5 headline f-bold'>Tiktok Video Downloader</h3>
             <h6 className='text-center headline'>Download tiktok videos without watermark.</h6>
 
-            <InputGroup className="mt-5 w-50" style={{ margin: 'auto' }}>
-                <Form.Control
-                    className='url-box shadow-none'
-                    placeholder="Paste copied link here"
-                    aria-label="Paste copied link here"
-                    aria-describedby="basic-addon2"
-                    size='lg'
-                    onChange={event => setLink(event.target.value)}
-                />
-                <Button
-                    className='fetch-btn shadow-none'
-                    onClick={fetchVideo}
-                >Download</Button>
-            </InputGroup>
+            <div className='url-box-wrapper' style={{ margin: 'auto' }}>
+                <InputGroup className="mt-5" >
+
+                    <Form.Control
+                        className='url-box shadow-none'
+                        placeholder="Paste copied link here"
+                        aria-label="Paste copied link here"
+                        aria-describedby="basic-addon2"
+                        size='lg'
+                        onChange={event => setLink(event.target.value)}
+                    />
+                    <Button
+                        className='fetch-btn shadow-none'
+                        onClick={fetchVideo}
+                    >Download</Button>
+
+                </InputGroup>
+            </div>
 
             <div className='text-center'>
                 {loading && <Loader />}

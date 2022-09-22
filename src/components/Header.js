@@ -10,7 +10,7 @@ const Header = () => {
                     <Navbar.Brand className='f-bold'>
                         <img
                             src={logo}
-                            className="d-inline-block align-top"
+                            className="d-inline-block align-top logo"
                             alt="React Bootstrap logo"
                             width={254}
                             heigt={86}

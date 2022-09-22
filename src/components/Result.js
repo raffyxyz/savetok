@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Card, Image, Row, Col, Button } from 'react-bootstrap'
+import { Container, Image, Row, Col, Button } from 'react-bootstrap'
 import fileDownload from 'js-file-download'
 const axios = require('axios');
 
@@ -18,12 +18,14 @@ const Result = ({ result }) => {
     }
 
     return (
+
         <div className='result mt-4'>
-            <Row >
-                <Col>
+            {/* <Container> */}
+            <Row xs={1}>
+                <Col >
                     <Image className='resize' thumbnail={true} src={result.origin_cover} />
                 </Col>
-                <Col>
+                <Col >
                     <Image
                         className='mt-2'
                         src={result.author.avatar}
@@ -41,6 +43,7 @@ const Result = ({ result }) => {
                     </Button>
                 </Col>
             </Row>
+            {/* </Container> */}
         </div>
         // <Card
         //     className='mt-4'
