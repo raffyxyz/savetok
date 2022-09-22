@@ -51,6 +51,7 @@ body {
 }
 
 .download-btn {
+  border-radius: 0 !important;
   background-color: #6246ea !important;
   color: #fffffe !important;
 }

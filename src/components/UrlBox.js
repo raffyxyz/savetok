@@ -44,6 +44,10 @@ const UrlBox = () => {
         return Object.keys(video).length !== 0;
     }
 
+    const isResponseUndefined = (res) => {
+        return typeof res === 'undefined';
+    }
+
     const fetchVideo = () => {
         setLoading(true);
         if (isLinkNotEmpty()) {
@@ -54,9 +58,13 @@ const UrlBox = () => {
                         .then(function (response) {
                             // handle success
                             const downloadInfo = response.data.data;
-                            setVideo(downloadInfo);
-                            console.log(downloadInfo)
-                            setLoading(false);
+                            if (isResponseUndefined(downloadInfo)) {//Check the response for undefined data
+                                setLoading(false);
+                                showError(true);
+                            } else {
+                                setVideo(downloadInfo);
+                                setLoading(false);
+                            }
                         });
                 } catch (error) {
                     console.log(error)
