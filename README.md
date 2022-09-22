@@ -2,7 +2,7 @@
 
 ## Download tiktok videos in hd and without watermark.
 
-Check the live demo [Create React App](https://savetok.vercel.app).
+Check the live [demo](https://savetok.vercel.app).
 
 ## Run locally
 
