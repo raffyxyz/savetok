@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import fileDownload from 'js-file-download'
+import { InputGroup, Form, Button } from 'react-bootstrap';
+
+
+import Loader from '../util/Loader';
+import Alert from '../util/Alert';
+import Result from './Result'
 
 
 
@@ -20,33 +25,82 @@ const axios = require('axios');
 const UrlBox = () => {
 
     const [link, setLink] = useState('');
+    const [video, setVideo] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, showError] = useState(false);
 
+    const isLinkValid = () => {
+        var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+        var linktest = link;
 
-    const handleClick = () => {
-        axios.get(`https://www.tikwm.com/api/?url=${link}`)
-            .then(function (response) {
-                // handle success
-                const downloadInfo = response.data.data;
-                // save(downloadInfo.play, downloadInfo.id)
-                handleDownload(downloadInfo.play, downloadInfo.id + ".mp4");
-                console.log(downloadInfo);
-                console.log(response)
-            });
+        return regex.test(linktest);
     }
 
-    const handleDownload = (url, filename) => {
-        axios.get(url, {
-            responseType: 'blob',
-        })
-            .then((res) => {
-                fileDownload(res.data, filename)
-            })
+    const isLinkNotEmpty = () => {
+        return link !== '';
+    }
+
+    const isVideoDataNotEmpty = () => {
+        return Object.keys(video).length !== 0;
+    }
+
+    const fetchVideo = () => {
+        setLoading(true);
+        // console.log(isLinkNotEmpty());
+        if (isLinkNotEmpty()) {
+            if (isLinkValid()) {
+                showError(false);
+                try {
+                    axios.get(`https://www.tikwm.com/api/?url=${link}?hd=1`)
+                        .then(function (response) {
+                            // handle success
+                            const downloadInfo = response.data.data;
+                            setVideo(downloadInfo);
+                            console.log(downloadInfo)
+                            setLoading(false);
+                        });
+                } catch (error) {
+                    console.log(error)
+                }
+            } else {
+                setLoading(false);
+                showError(true);
+            }
+            // showError(false);
+        } else {
+            setLoading(false)
+            showError(true);
+        }
     }
 
     return (
         <>
-            <input type='text' onChange={event => setLink(event.target.value)}></input>
-            <button onClick={handleClick}>Click</button>
+            {/* <input type='text' onChange={event => setLink(event.target.value)}></input>
+            <button onClick={handleClick}>Click</button> */}
+
+            <h3 className='text-center mt-5 headline f-bold'>Tiktok Video Downloader</h3>
+            <h6 className='text-center headline'>Download tiktok videos without watermark.</h6>
+
+            <InputGroup className="mt-5 w-50" style={{ margin: 'auto' }}>
+                <Form.Control
+                    className='url-box shadow-none'
+                    placeholder="Paste copied link here"
+                    aria-label="Paste copied link here"
+                    aria-describedby="basic-addon2"
+                    size='lg'
+                    onChange={event => setLink(event.target.value)}
+                />
+                <Button
+                    className='fetch-btn shadow-none'
+                    onClick={fetchVideo}
+                >Download</Button>
+            </InputGroup>
+
+            <div className='text-center'>
+                {loading && <Loader />}
+                {error && <Alert />}
+                {isVideoDataNotEmpty() && <Result result={video} />}
+            </div>
         </>
     )
 }
