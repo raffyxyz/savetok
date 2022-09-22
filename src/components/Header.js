@@ -7,7 +7,7 @@ const Header = () => {
         <>
             <Navbar id='header' bg="light">
                 <Container>
-                    <Navbar.Brand className='f-bold'>
+                    <Navbar.Brand className='f-bold' href='https://savetok.vecel.app'>
                         <img
                             src={logo}
                             className="d-inline-block align-top logo"

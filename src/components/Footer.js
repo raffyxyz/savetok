@@ -14,7 +14,7 @@ const Footer = () => {
                     Paste the copied link in the textbox above.
                 </ListGroup.Item>
                 <ListGroup.Item as="li" className='border-0 text-muted'>
-                    Wait for it to load the download Button.
+                    Click the download button, wait for it to load the video details.
                 </ListGroup.Item>
                 <ListGroup.Item as="li" className='border-0 text-muted'>
                     Click the download button to save the video without watermark.
