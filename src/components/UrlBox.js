@@ -46,7 +46,6 @@ const UrlBox = () => {
 
     const fetchVideo = () => {
         setLoading(true);
-        // console.log(isLinkNotEmpty());
         if (isLinkNotEmpty()) {
             if (isLinkValid()) {
                 showError(false);
@@ -75,9 +74,6 @@ const UrlBox = () => {
 
     return (
         <>
-            {/* <input type='text' onChange={event => setLink(event.target.value)}></input>
-            <button onClick={handleClick}>Click</button> */}
-
             <h3 className='text-center mt-5 headline f-bold'>Tiktok Video Downloader</h3>
             <h6 className='text-center headline'>Download tiktok videos without watermark.</h6>
 

@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Card, Image, Row, Col, Button } from 'react-bootstrap'
 import fileDownload from 'js-file-download'
 const axios = require('axios');
 
 const Result = ({ result }) => {
 
-    const handleDownload = (url, filename) => {
-        // e.preventDefault();
-        axios.get(url, {
+    const buttonRef = useRef(null);
+
+    const handleDownload = () => {
+        buttonRef.current.disabled = true;
+        axios.get(result.play, {
             responseType: 'blob',
         })
             .then((res) => {
-                fileDownload(res.data, 'SaveTok_' + filename + '.mp4')
+                fileDownload(res.data, 'SaveTok_' + result.id + '.mp4')
             })
     }
 
@@ -32,6 +34,8 @@ const Result = ({ result }) => {
                     <p className='headline'>{result.title}</p>
                     <Button
                         className='download-btn'
+                        ref={buttonRef}
+                        onClick={handleDownload}
                     >
                         Download Video
                     </Button>
