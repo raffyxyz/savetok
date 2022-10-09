@@ -89,6 +89,7 @@ const UrlBox = () => {
                 <InputGroup className="mt-5" >
 
                     <Form.Control
+                        type='search'
                         className='url-box shadow-none'
                         placeholder="Paste copied link here"
                         aria-label="Paste copied link here"
@@ -97,11 +98,17 @@ const UrlBox = () => {
                         onChange={event => setLink(event.target.value)}
                     />
                     <Button
-                        className='fetch-btn shadow-none'
+                        className='fetch-btn shadow-none text-center'
                         onClick={fetchVideo}
-                    >Download</Button>
+                        size='lg'
+                    >
+                        Search
+                    </Button>
 
                 </InputGroup>
+            </div>
+            <div className='button-wrapper text-center mt-4'>
+
             </div>
 
             <div className='text-center'>

@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
-  background: #fffffe;
-  font-family: 'Heebo', sans-serif;
+  background: #fffffe !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 #header {
@@ -16,11 +15,13 @@ body {
 
 .url-box {
   border-radius: 0 !important;
-  border: 1px solid #2b2c34 !important;
+  /* border: 1px solid #313239 !important; */
 }
 
 .url-box:focus {
-  border: 1px solid #6246ea !important;
+  /* border: 1px solid #6246ea !important; */
+  /* outline: none !important;
+  border-color: #6246ea !important; */
 }
 
 .result {
@@ -48,7 +49,36 @@ body {
   background-color: #6246ea !important;
   border: 1px solid #6246ea !important;
   color: #fffffe !important;
+  text-transform: uppercase;
 }
+
+.fetch-btn,
+input::-webkit-input-placeholder {
+  font-size: 18px;
+  line-height: 3;
+}
+
+.fetch-btn,
+input::-moz-placeholder {
+  font-size: 18px;
+  line-height: 3;
+}
+
+/* Firefox 19+ */
+.fetch-btn,
+input:-moz-placeholder {
+  font-size: 18px;
+  line-height: 3;
+}
+
+/* Firefox 18- */
+.fetch-btn,
+input:-ms-input-placeholder {
+  font-size: 18px;
+  line-height: 3;
+}
+
+/* IE */
 
 .download-btn {
   border-radius: 0 !important;
