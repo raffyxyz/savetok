@@ -1,11 +1,14 @@
 import React from 'react';
-import { Center, Title } from '@mantine/core';
+import { Center, Title, Group, Avatar, Anchor } from '@mantine/core';
 
 const AppHeader = () => {
   return (
-    <Center>
-      <Title order={1}>SaveTok</Title>
-    </Center>
+    <Anchor underline={false} size='30px' variant='text' weight='bold'>
+      SaveTok
+    </Anchor>
+    // <Center>
+    //   <Title order={1}>SaveTok</Title>
+    // </Center>
   );
 };
 
