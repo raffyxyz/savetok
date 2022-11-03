@@ -1,23 +1,31 @@
 import './App.css';
-import { Container, Title } from '@mantine/core';
+import { Container, Title, MantineProvider } from '@mantine/core';
 import AppHeader from './components/AppHeader';
 import VideoBox from './components/VideoBox';
 
 function App() {
   return (
     <>
-      <Container size='md' px='md'>
-        <AppHeader />
+      <MantineProvider
+        theme={{
+          fontFamily: 'Nunito, sans-serif',
+          headings: { fontFamily: 'Nunito, sans-serif' },
+        }}
+        withGlobalStyles
+      >
+        <Container size='md' px='md'>
+          <AppHeader />
 
-        <Title order={3} align='center' sx={{ marginTop: '4em' }}>
-          Tiktok Video Downloader
-        </Title>
-        <Title order={6} align='center'>
-          Download Tiktok Videos Without Watermark
-        </Title>
+          <Title order={3} align='center' sx={{ marginTop: '4em' }}>
+            Tiktok Video Downloader
+          </Title>
+          <Title order={6} align='center'>
+            Download Tiktok Videos Without Watermark
+          </Title>
 
-        <VideoBox />
-      </Container>
+          <VideoBox />
+        </Container>
+      </MantineProvider>
     </>
   );
 }
