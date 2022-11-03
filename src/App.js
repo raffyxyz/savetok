@@ -1,15 +1,23 @@
 import './App.css';
-import UrlBox from './components/UrlBox';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { Container, Title } from '@mantine/core';
+import AppHeader from './components/AppHeader';
+import VideoBox from './components/VideoBox';
 
 function App() {
   return (
     <>
-      <Header />
-      <UrlBox />
+      <Container size='md' px='md'>
+        <AppHeader />
 
-      <Footer />
+        <Title order={3} align='center' sx={{ marginTop: '4em' }}>
+          Tiktok Video Downloader
+        </Title>
+        <Title order={6} align='center'>
+          Download Tiktok Videos Without Watermark
+        </Title>
+
+        <VideoBox />
+      </Container>
     </>
   );
 }
