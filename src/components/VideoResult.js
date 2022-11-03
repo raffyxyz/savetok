@@ -9,9 +9,15 @@ import {
   Skeleton,
 } from '@mantine/core';
 import { IconReportSearch, IconHistory } from '@tabler/icons';
+import { saveAs } from 'file-saver';
 
 const VideoResult = ({ video, loader }) => {
   const noVideoData = Object.keys(video).length === 0;
+
+  const saveVideo = () => {
+    saveAs(video.play, `${video.id}.mp4`);
+  };
+
   return (
     <Tabs
       defaultValue='result'
@@ -41,7 +47,7 @@ const VideoResult = ({ video, loader }) => {
               {video.title}
             </Text>
             <Center>
-              <Button color='grape' mt='md'>
+              <Button color='grape' mt='md' onClick={saveVideo}>
                 Download
               </Button>
             </Center>

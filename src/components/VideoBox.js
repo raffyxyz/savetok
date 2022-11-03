@@ -15,7 +15,13 @@ const VideoBox = () => {
     },
 
     validate: {
-      link: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      // link: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      link: (value) =>
+        value.length === 0
+          ? 'Link should not be empty'
+          : /^(ftp|http|https):\/\/[^ "]+$/.test(value)
+          ? null
+          : 'Input is not a link',
     },
   });
 
@@ -34,11 +40,12 @@ const VideoBox = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <div style={{ marginTop: '4em' }}>
         <form onSubmit={form.onSubmit((values) => getVideoInfo(values))}>
-          <Group position='center' spacing='xs'>
+          <Group position='center' spacing='xs' align='flex-start'>
             <TextInput
               placeholder='Paste link here'
               size='lg'
