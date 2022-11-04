@@ -8,8 +8,9 @@ import {
   Image,
   Skeleton,
 } from '@mantine/core';
-import { IconReportSearch, IconHistory } from '@tabler/icons';
+import { IconReportSearch } from '@tabler/icons';
 import { saveAs } from 'file-saver';
+// import VideoHistory from './VideoHistory';
 
 const VideoResult = ({ video, loader }) => {
   const noVideoData = Object.keys(video).length === 0;
@@ -29,9 +30,9 @@ const VideoResult = ({ video, loader }) => {
         <Tabs.Tab value='result' icon={<IconReportSearch size={14} />}>
           Result
         </Tabs.Tab>
-        <Tabs.Tab value='history' icon={<IconHistory size={14} />}>
+        {/* <Tabs.Tab value='history' icon={<IconHistory size={14} />}>
           History
-        </Tabs.Tab>
+        </Tabs.Tab> */}
       </Tabs.List>
 
       <Tabs.Panel value='result' pt='xs'>
@@ -70,9 +71,7 @@ const VideoResult = ({ video, loader }) => {
         ) : null}
       </Tabs.Panel>
 
-      <Tabs.Panel value='history' pt='xs'>
-        History
-      </Tabs.Panel>
+      {/* <Tabs.Panel value='history' pt='xs'></Tabs.Panel> */}
     </Tabs>
   );
 };

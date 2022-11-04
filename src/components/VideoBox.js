@@ -15,7 +15,6 @@ const VideoBox = () => {
     },
 
     validate: {
-      // link: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       link: (value) =>
         value.length === 0
           ? 'Link should not be empty'

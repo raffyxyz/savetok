@@ -14,7 +14,6 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "file-saver": "^2.0.5",
-    "js-file-download": "^0.4.12",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
@@ -26,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json"
   },
   "eslintConfig": {
     "extends": [
