@@ -7,16 +7,32 @@ import {
   Text,
   Image,
   Skeleton,
+  Anchor,
 } from '@mantine/core';
 import { IconReportSearch } from '@tabler/icons';
+import axios from 'axios';
 import { saveAs } from 'file-saver';
+import fileDownload from 'js-file-download';
 // import VideoHistory from './VideoHistory';
 
 const VideoResult = ({ video, loader }) => {
   const noVideoData = Object.keys(video).length === 0;
 
-  const saveVideo = () => {
-    saveAs(video.play, `${video.id}.mp4`);
+  //The best download implementation
+  const downloadVideo = (url, filename) => {
+    console.log(url);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${filename}.mp4`);
+
+    // Append to html link element page
+    document.body.appendChild(link);
+
+    // Start download
+    link.click();
+
+    // Clean up and remove the link
+    link.parentNode.removeChild(link);
   };
 
   return (
@@ -48,7 +64,11 @@ const VideoResult = ({ video, loader }) => {
               {video.title}
             </Text>
             <Center>
-              <Button color='grape' mt='md' onClick={saveVideo}>
+              <Button
+                color='grape'
+                mt='md'
+                onClick={() => downloadVideo(video.play, video.id)}
+              >
                 Download
               </Button>
             </Center>
