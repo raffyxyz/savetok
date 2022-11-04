@@ -16,9 +16,10 @@ const VideoResult = ({ video, loader }) => {
 
   //The best download implementation
   const downloadVideo = (url, filename) => {
-    console.log(url);
     const link = document.createElement('a');
     link.href = url;
+
+    link.setAttribute('target', '_blank');
     link.setAttribute('download', `${filename}.mp4`);
 
     // Append to html link element page
