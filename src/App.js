@@ -8,8 +8,8 @@ function App() {
     <>
       <MantineProvider
         theme={{
-          fontFamily: 'Nunito, sans-serif',
-          headings: { fontFamily: 'Nunito, sans-serif' },
+          fontFamily: 'Open Sans, sans-serif',
+          headings: { fontFamily: 'Open Sans, sans-serif' },
         }}
         withGlobalStyles
       >
