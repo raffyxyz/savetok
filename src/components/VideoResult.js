@@ -7,12 +7,8 @@ import {
   Text,
   Image,
   Skeleton,
-  Anchor,
 } from '@mantine/core';
 import { IconReportSearch } from '@tabler/icons';
-import axios from 'axios';
-import { saveAs } from 'file-saver';
-import fileDownload from 'js-file-download';
 // import VideoHistory from './VideoHistory';
 
 const VideoResult = ({ video, loader }) => {
