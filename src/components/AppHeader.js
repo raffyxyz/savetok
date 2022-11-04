@@ -11,7 +11,7 @@ import {
   List,
   ThemeIcon,
 } from '@mantine/core';
-import { IconCheck, IconHeart } from '@tabler/icons';
+import { IconCheck } from '@tabler/icons';
 
 const AppHeader = () => {
   const [opened, setOpened] = useState(false);
