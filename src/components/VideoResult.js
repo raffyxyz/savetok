@@ -7,11 +7,12 @@ import {
   Text,
   Image,
   Skeleton,
+  Alert,
 } from '@mantine/core';
-import { IconReportSearch } from '@tabler/icons';
+import { IconReportSearch, IconAlertCircle } from '@tabler/icons';
 // import VideoHistory from './VideoHistory';
 
-const VideoResult = ({ video, loader }) => {
+const VideoResult = ({ video, loader, invalidLink }) => {
   const noVideoData = Object.keys(video).length === 0;
 
   //The best download implementation
@@ -85,6 +86,17 @@ const VideoResult = ({ video, loader }) => {
               <Skeleton height={8} mt='md' width='50%' />
             </Center>
           </Card>
+        ) : null}
+
+        {invalidLink ? (
+          <Alert
+            icon={<IconAlertCircle size={16} />}
+            title='Invalid link!'
+            color='red'
+            mt={50}
+          >
+            Link pasted is not a tiktok link.
+          </Alert>
         ) : null}
       </Tabs.Panel>
 

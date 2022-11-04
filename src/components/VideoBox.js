@@ -8,6 +8,7 @@ import VideoResult from './VideoResult';
 const VideoBox = () => {
   const [loader, setLoader] = useState(false);
   const [videodata, setVideoData] = useState({});
+  const [notTiktokLink, setNotTikTokLink] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -26,13 +27,18 @@ const VideoBox = () => {
 
   const getVideoInfo = async (values) => {
     setLoader(true);
+    setNotTikTokLink(false);
     setVideoData({});
     try {
       axios
         .get(`https://www.tikwm.com/api/?url=${values.link}?hd=1`)
         .then((response) => {
           const downloadInfo = response.data.data;
-          setVideoData(downloadInfo);
+          if (typeof downloadInfo !== 'undefined') {
+            setVideoData(downloadInfo);
+          } else {
+            setNotTikTokLink(true);
+          }
           setLoader(false);
         });
     } catch (error) {
@@ -65,7 +71,11 @@ const VideoBox = () => {
         </form>
       </div>
 
-      <VideoResult video={videodata} loader={loader} />
+      <VideoResult
+        video={videodata}
+        loader={loader}
+        invalidLink={notTiktokLink}
+      />
     </>
   );
 };
