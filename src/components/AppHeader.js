@@ -71,7 +71,7 @@ const AppHeader = () => {
           </List>
           <Space h='xl' />
           <Title order={5}>Developed by</Title>
-          <Text>Raffy Amoguis a self taught web developer.</Text>
+          <Text>Raffy Amoguis</Text>
         </Drawer>
         <Button variant='light' color='grape' onClick={() => setOpened(true)}>
           About
