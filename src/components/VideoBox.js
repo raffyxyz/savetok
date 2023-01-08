@@ -7,6 +7,7 @@ import VideoResult from './VideoResult';
 
 const VideoBox = () => {
   const [loader, setLoader] = useState(false);
+  const [link, setLink] = useState('');
   const [videodata, setVideoData] = useState({});
   const [notTiktokLink, setNotTikTokLink] = useState(false);
 
@@ -35,6 +36,7 @@ const VideoBox = () => {
         .then((response) => {
           const downloadInfo = response.data.data;
           if (typeof downloadInfo !== 'undefined') {
+            setLink(values.link);
             setVideoData(downloadInfo);
           } else {
             setNotTikTokLink(true);
@@ -73,6 +75,7 @@ const VideoBox = () => {
 
       <VideoResult
         video={videodata}
+        link={link}
         loader={loader}
         invalidLink={notTiktokLink}
       />
