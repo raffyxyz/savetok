@@ -4,6 +4,7 @@ import { IconLink } from '@tabler/icons';
 import { useForm } from '@mantine/form';
 import axios from 'axios';
 import VideoResult from './VideoResult';
+// import { db } from '../db';
 
 const VideoBox = () => {
   const [loader, setLoader] = useState(false);
@@ -35,6 +36,7 @@ const VideoBox = () => {
         .then((response) => {
           const downloadInfo = response.data.data;
           if (typeof downloadInfo !== 'undefined') {
+            // save(downloadInfo);
             setVideoData(downloadInfo);
           } else {
             setNotTikTokLink(true);
@@ -45,6 +47,17 @@ const VideoBox = () => {
       console.log(error);
     }
   };
+
+  // const save = async (data) => {
+  //   // data.cover data.title data.play
+  //   const id = await db.history.add({
+  //     cover: data.cover,
+  //     title: data.title,
+  //     url: data.play,
+  //   });
+
+  //   console.log(id);
+  // };
 
   return (
     <>

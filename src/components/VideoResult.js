@@ -9,8 +9,9 @@ import {
   Skeleton,
   Alert,
 } from '@mantine/core';
-import { IconReportSearch, IconAlertCircle } from '@tabler/icons';
-// import VideoHistory from './VideoHistory';
+import { IconReportSearch, IconAlertCircle, IconHistory } from '@tabler/icons';
+import VideoHistory from './VideoHistory';
+import { db } from '../db';
 
 const VideoResult = ({ video, loader, invalidLink }) => {
   const noVideoData = Object.keys(video).length === 0;
@@ -31,6 +32,20 @@ const VideoResult = ({ video, loader, invalidLink }) => {
 
     // Clean up and remove the link
     link.parentNode.removeChild(link);
+
+    // Save history
+    save();
+  };
+
+  const save = async () => {
+    // data.cover data.title data.play
+    const id = await db.history.add({
+      cover: video.cover,
+      title: video.title,
+      url: video.play,
+    });
+
+    console.log(id);
   };
 
   return (
@@ -44,9 +59,9 @@ const VideoResult = ({ video, loader, invalidLink }) => {
         <Tabs.Tab value='result' icon={<IconReportSearch size={14} />}>
           Result
         </Tabs.Tab>
-        {/* <Tabs.Tab value='history' icon={<IconHistory size={14} />}>
+        <Tabs.Tab value='history' icon={<IconHistory size={14} />}>
           History
-        </Tabs.Tab> */}
+        </Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value='result' pt='xs'>
@@ -100,7 +115,9 @@ const VideoResult = ({ video, loader, invalidLink }) => {
         ) : null}
       </Tabs.Panel>
 
-      {/* <Tabs.Panel value='history' pt='xs'></Tabs.Panel> */}
+      <Tabs.Panel value='history' pt='xs'>
+        <VideoHistory />
+      </Tabs.Panel>
     </Tabs>
   );
 };
