@@ -4,10 +4,10 @@ import { IconLink } from '@tabler/icons';
 import { useForm } from '@mantine/form';
 import axios from 'axios';
 import VideoResult from './VideoResult';
-// import { db } from '../db';
 
 const VideoBox = () => {
   const [loader, setLoader] = useState(false);
+  const [link, setLink] = useState('');
   const [videodata, setVideoData] = useState({});
   const [notTiktokLink, setNotTikTokLink] = useState(false);
 
@@ -36,7 +36,7 @@ const VideoBox = () => {
         .then((response) => {
           const downloadInfo = response.data.data;
           if (typeof downloadInfo !== 'undefined') {
-            // save(downloadInfo);
+            setLink(values.link);
             setVideoData(downloadInfo);
           } else {
             setNotTikTokLink(true);
@@ -47,17 +47,6 @@ const VideoBox = () => {
       console.log(error);
     }
   };
-
-  // const save = async (data) => {
-  //   // data.cover data.title data.play
-  //   const id = await db.history.add({
-  //     cover: data.cover,
-  //     title: data.title,
-  //     url: data.play,
-  //   });
-
-  //   console.log(id);
-  // };
 
   return (
     <>
@@ -86,6 +75,7 @@ const VideoBox = () => {
 
       <VideoResult
         video={videodata}
+        link={link}
         loader={loader}
         invalidLink={notTiktokLink}
       />

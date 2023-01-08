@@ -13,7 +13,7 @@ import { IconReportSearch, IconAlertCircle, IconHistory } from '@tabler/icons';
 import VideoHistory from './VideoHistory';
 import { db } from '../db';
 
-const VideoResult = ({ video, loader, invalidLink }) => {
+const VideoResult = ({ video, link, loader, invalidLink }) => {
   const noVideoData = Object.keys(video).length === 0;
 
   //The best download implementation
@@ -42,7 +42,7 @@ const VideoResult = ({ video, loader, invalidLink }) => {
     const id = await db.history.add({
       cover: video.cover,
       title: video.title,
-      url: video.play,
+      url: link,
     });
 
     console.log(id);

@@ -62,7 +62,15 @@ const VideoHistory = () => {
               width={50}
               alt='Video cover'
             />
-            <Tooltip label={h.title}>
+            <Tooltip
+              multiline
+              width={220}
+              withArrow
+              transition='fade'
+              transitionDuration={200}
+              color='grape'
+              label={h.title}
+            >
               <Text size='xs'>{trimTitle(h.title)}</Text>
             </Tooltip>
             <Group spacing={-1}>
