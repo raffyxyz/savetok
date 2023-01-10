@@ -15,3 +15,5 @@ Clone the repo and run:
 
 ### `npm start`
 
+## Updated version that uses typescript with new functionality
+[Savetok](https://github.com/raffyamoguis/savetok-titktok-downloader)
